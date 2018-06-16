@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rakesh-elasticsearch-9200
+  labels:
+    name: rakesh-elasticsearch
+
+spec:
+  externalTrafficPolicy: Local #does not allow forward packets to anpther nodes in cluster
+  ports:
+  - name: rakesh-elasticsearch
+    port: 9200
+    targetPort: 9200
+  type: NodePort #can leanr more on this here https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
+  selector:
+    name: rakesh-elasticsearch
+
